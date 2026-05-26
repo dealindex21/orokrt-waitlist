@@ -290,9 +290,9 @@ export default function OROKRTWaitlist() {
       <section
         ref={(el) => reg(el as HTMLElement | null, 'h')}
         className={vc('h')}
-        style={{ padding: '96px 24px', maxWidth: 1000, margin: '0 auto' }}
+        style={{ padding: '72px 24px 48px', maxWidth: 1000, margin: '0 auto' }}
       >
-        <div style={{ marginBottom: 48 }}>
+        <div style={{ marginBottom: 40 }}>
           <p style={{ fontFamily: MONO, fontSize: 12, color: '#C9A84C', marginBottom: 8 }}>How it works</p>
           <h2 style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 600, letterSpacing: '-0.03em', color: '#fff' }}>
             Connect. Approve. Scale.
@@ -318,7 +318,7 @@ export default function OROKRTWaitlist() {
       <section
         ref={(el) => reg(el as HTMLElement | null, 'm')}
         className={vc('m')}
-        style={{ padding: '64px 24px 96px', maxWidth: 1000, margin: '0 auto' }}
+        style={{ padding: '48px 24px 56px', maxWidth: 1000, margin: '0 auto' }}
       >
         <div className="grid-moat" style={{ display: 'grid', gap: 56, alignItems: 'start' }}>
           <div>
@@ -363,7 +363,7 @@ export default function OROKRTWaitlist() {
       <section
         ref={(el) => reg(el as HTMLElement | null, 'v')}
         className={vc('v')}
-        style={{ padding: '48px 24px 96px', maxWidth: 860, margin: '0 auto' }}
+        style={{ padding: '48px 24px 56px', maxWidth: 860, margin: '0 auto' }}
       >
         <h2 style={{ fontSize: 32, fontWeight: 600, color: '#fff', textAlign: 'center', letterSpacing: '-0.03em', marginBottom: 40 }}>
           Not another <span style={{ color: '#777', textDecoration: 'line-through' }}>dashboard</span>. An operator.
@@ -417,7 +417,7 @@ export default function OROKRTWaitlist() {
       <section
         ref={(el) => reg(el as HTMLElement | null, 't')}
         className={vc('t')}
-        style={{ padding: '48px 24px 96px', maxWidth: 860, margin: '0 auto', textAlign: 'center' }}
+        style={{ padding: '48px 24px 56px', maxWidth: 860, margin: '0 auto', textAlign: 'center' }}
       >
         <p style={{ fontFamily: MONO, fontSize: 12, color: '#C9A84C', marginBottom: 8 }}>Progressive trust</p>
         <h2 style={{ fontSize: 'clamp(24px, 3vw, 34px)', fontWeight: 600, color: '#fff', marginBottom: 36, letterSpacing: '-0.03em' }}>
@@ -461,7 +461,7 @@ export default function OROKRTWaitlist() {
         `}</style>
 
       {/* FINAL CTA */}
-      <section style={{ padding: '96px 24px 120px', textAlign: 'center', position: 'relative' }}>
+      <section style={{ padding: '72px 24px 96px', textAlign: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, #C9A84C04, transparent 50%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <h2 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 600, color: '#fff', letterSpacing: '-0.04em', marginBottom: 14, lineHeight: 1.1 }}>
