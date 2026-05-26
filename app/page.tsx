@@ -165,8 +165,8 @@ export default function OROKRTWaitlist() {
           maxWidth: 500, marginBottom: 36, fontWeight: 400, letterSpacing: '-0.01em',
           animation: 'fadeUp 0.6s ease-out 0.15s both',
         }}>
-          One AI operator replaces your entire ops stack across Amazon, eBay, and Shopify.
-          PPC, listings, B2B, launches, reviews — with you controlling the autonomy.
+          Built by a seller who grew a £1.7M multi-channel business from 2019 — then spent
+          3 years encoding every operational decision into AI. Now it&apos;s yours.
         </p>
 
         <div style={{ animation: 'fadeUp 0.6s ease-out 0.2s both' }}>
@@ -376,6 +376,66 @@ export default function OROKRTWaitlist() {
             <span key={i} style={{ fontFamily: MONO, fontSize: 11, color: '#333', padding: '4px 10px', border: '1px solid #151515', borderRadius: 4 }}>{t}</span>
           ))}
         </div>
+      </section>
+
+      {/* FOUNDER TIMELINE */}
+      <section
+        ref={(el) => reg(el as HTMLElement | null, 'f')}
+        className={vc('f')}
+        style={{ padding: '64px 24px 96px', maxWidth: 1000, margin: '0 auto' }}
+      >
+        <div style={{ marginBottom: 48, textAlign: 'center' }}>
+          <p style={{ fontFamily: MONO, fontSize: 12, color: '#C9A84C', marginBottom: 8 }}>Origin</p>
+          <h2 style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: '#fff', letterSpacing: '-0.03em' }}>
+            Built by a seller, not a lab.
+          </h2>
+        </div>
+
+        {/* Desktop: horizontal timeline */}
+        <div style={{ position: 'relative', display: 'flex', gap: 0 }} className="timeline-wrap">
+          {/* connecting line */}
+          <div style={{
+            position: 'absolute', top: 7, left: '8px', right: '8px', height: 1,
+            background: '#222', zIndex: 0,
+          }} />
+
+          {[
+            { year: '2016', desc: 'Founded Infinity Market UK Ltd' },
+            { year: '2019', desc: 'Expanded to Amazon, eBay, Shopify' },
+            { year: '2022', desc: '£1M revenue. Ops consuming 60+ hrs/week' },
+            { year: '2023', desc: 'Started encoding decisions into AI playbooks' },
+            { year: '2025', desc: '862 ASINs running autonomously across 3 channels' },
+            { year: '2026', desc: 'Rebuilt as OROKRT.ai for any seller' },
+          ].map((m, i, arr) => (
+            <div key={i} style={{ flex: 1, position: 'relative', zIndex: 1, paddingRight: i < arr.length - 1 ? 12 : 0 }}>
+              {/* dot */}
+              <div style={{
+                width: 14, height: 14, borderRadius: '50%',
+                background: i === arr.length - 1 ? '#C9A84C' : '#222',
+                border: `2px solid ${i === arr.length - 1 ? '#C9A84C' : '#333'}`,
+                marginBottom: 16,
+              }} />
+              <div style={{ fontFamily: MONO, fontSize: 13, fontWeight: 500, color: '#C9A84C', marginBottom: 6 }}>
+                {m.year}
+              </div>
+              <div style={{ fontSize: 13, lineHeight: 1.5, color: '#777' }}>
+                {m.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .timeline-wrap {
+              flex-direction: column !important;
+              gap: 28px !important;
+            }
+            .timeline-wrap > div > div:first-child {
+              display: none !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* FINAL CTA */}
