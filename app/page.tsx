@@ -465,7 +465,7 @@ export default function OROKRTWaitlist() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <div style={{ width: 18, height: 18, borderRadius: 4, background: '#C9A84C', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 600, color: '#000' }}>O</div>
-          <span style={{ fontSize: 12, color: '#333' }}>OROKRT.ai · Infinity Market UK Ltd</span>
+          <span style={{ fontSize: 12, color: '#333' }}>OROKRT.ai · Orokrt Retail Ltd</span>
         </div>
         <div style={{ fontFamily: MONO, fontSize: 11, color: '#333', display: 'flex', gap: 16 }}>
           <span>37 skills</span><span>3 channels</span><span>7 countries</span><span>SEIS eligible</span>
