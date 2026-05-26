@@ -136,8 +136,8 @@ export default function OROKRTWaitlist() {
 
       {/* HERO */}
       <section style={{
-        minHeight: '100vh', display: 'flex', flexDirection: 'column',
-        justifyContent: 'center', padding: '100px 24px 60px',
+        minHeight: 'calc(100vh - 44px)', display: 'flex', flexDirection: 'column',
+        justifyContent: 'center', padding: '100px 24px 48px',
         maxWidth: 1000, margin: '0 auto',
       }}>
         <div style={{ animation: 'fadeUp 0.6s ease-out' }}>
@@ -200,27 +200,28 @@ export default function OROKRTWaitlist() {
           ))}
         </div>
 
-        {/* MARQUEE — inside hero so it's visible above the fold */}
-        <div style={{
-          margin: '0 -24px',
-          borderTop: '1px solid #1a1a1a', borderBottom: '1px solid #1a1a1a',
-          padding: '12px 0', overflow: 'hidden', whiteSpace: 'nowrap', background: '#0a0a0a',
-        }}>
-          <div style={{ display: 'inline-block', animation: 'marquee 40s linear infinite' }}>
-            {[1, 2].map((k) => (
-              <span key={k}>
-                {['PPC architecture', 'COSMO pre-flight', 'B2B isolation', 'Launch ladder',
-                  'Competitor defence', 'Review solicitation', 'Keyword graduation',
-                  'BuyBox monitoring', 'Dayparting', 'Margin gates'].map((t, j) => (
-                  <span key={j} style={{ fontFamily: MONO, fontSize: 12, color: '#777', letterSpacing: '0.02em' }}>
-                    {t}<span style={{ color: '#C9A84C40', margin: '0 28px' }}>·</span>
-                  </span>
-                ))}
-              </span>
-            ))}
-          </div>
-        </div>
       </section>
+
+      {/* MARQUEE — full-width, sits at bottom of first viewport */}
+      <div style={{
+        borderTop: '1px solid #1a1a1a', borderBottom: '1px solid #1a1a1a',
+        padding: '12px 0', overflow: 'hidden', whiteSpace: 'nowrap', background: '#0a0a0a',
+        width: '100%',
+      }}>
+        <div style={{ display: 'inline-block', animation: 'marquee 40s linear infinite' }}>
+          {[1, 2].map((k) => (
+            <span key={k}>
+              {['PPC architecture', 'COSMO pre-flight', 'B2B isolation', 'Launch ladder',
+                'Competitor defence', 'Review solicitation', 'Keyword graduation',
+                'BuyBox monitoring', 'Dayparting', 'Margin gates'].map((t, j) => (
+                <span key={j} style={{ fontFamily: MONO, fontSize: 12, color: '#777', letterSpacing: '0.02em' }}>
+                  {t}<span style={{ color: '#C9A84C40', margin: '0 28px' }}>·</span>
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* HOW IT WORKS */}
       <section
