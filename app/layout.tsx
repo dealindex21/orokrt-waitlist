@@ -25,9 +25,24 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.svg' },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'OROKRT.ai',
+  url: 'https://orokrt.ai',
+  description: 'AI operator that replaces your entire e-commerce ops stack across Amazon, eBay, and Shopify. PPC, listings, B2B, launches, reviews — built from 5 years of real seller operations.',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '199', priceCurrency: 'GBP', priceSpecification: { '@type': 'UnitPriceSpecification', price: '199', priceCurrency: 'GBP', unitText: 'MONTH' } },
+  creator: { '@type': 'Organization', name: 'Orokrt Retail Ltd', url: 'https://orokrt.ai' },
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      </head>
       <body style={{ background: '#000', margin: 0, padding: 0 }}>{children}</body>
     </html>
   )
