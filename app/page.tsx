@@ -152,8 +152,8 @@ export default function OROKRTWaitlist() {
 
       {/* HERO */}
       <section style={{
-        minHeight: 'calc(100vh - 44px)', display: 'flex', flexDirection: 'column',
-        justifyContent: 'center', padding: '100px 24px 48px',
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'flex-start', padding: '120px 24px 64px',
         maxWidth: 1000, margin: '0 auto',
       }}>
         <div style={{ animation: 'fadeUp 0.6s ease-out' }}>
