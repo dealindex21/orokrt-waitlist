@@ -190,7 +190,7 @@ export default function OROKRTWaitlist() {
           {error && (
             <div role="alert" aria-live="polite" style={{ marginTop: 6, fontSize: 12, color: '#EF4444' }}>{error}</div>
           )}
-          <p style={{ marginTop: 12, fontSize: 12, color: '#777' }}>No spam · Unsubscribe anytime · SEIS eligible</p>
+          <p style={{ marginTop: 12, fontSize: 12, color: '#777' }}>No spam · Unsubscribe anytime</p>
         </div>
 
         {/* Stats strip */}
@@ -449,6 +449,10 @@ export default function OROKRTWaitlist() {
           .grid-vs    { grid-template-columns: 1fr 1fr; }
           .grid-trust { grid-template-columns: 1fr 1fr 1fr; }
           .trust-cell { border-right: 1px solid #1a1a1a; }
+          details summary { list-style: none; cursor: pointer; }
+          details summary::-webkit-details-marker { display: none; }
+          details[open] .faq-icon { transform: rotate(45deg); }
+          .faq-icon { transition: transform 0.2s; display: inline-block; }
           @media (max-width: 640px) {
             .grid-3col  { grid-template-columns: 1fr !important; }
             .grid-moat  { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -459,6 +463,88 @@ export default function OROKRTWaitlist() {
             .timeline-wrap > div > div:first-child { display: none !important; }
           }
         `}</style>
+
+      {/* FAQ */}
+      <section
+        ref={(el) => reg(el as HTMLElement | null, 'q')}
+        className={vc('q')}
+        style={{ padding: '56px 24px 56px', maxWidth: 720, margin: '0 auto' }}
+      >
+        <div style={{ marginBottom: 40, textAlign: 'center' }}>
+          <p style={{ fontFamily: MONO, fontSize: 12, color: '#C9A84C', marginBottom: 8 }}>FAQ</p>
+          <h2 style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 600, color: '#fff', letterSpacing: '-0.03em' }}>
+            Questions answered.
+          </h2>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 1, background: '#111', borderRadius: 12, overflow: 'hidden' }}>
+          {[
+            {
+              q: 'When do I get access?',
+              a: 'Early access is rolling out in batches, in waitlist order. You will get an email when your spot is ready — typically within 2–4 weeks of joining.',
+            },
+            {
+              q: 'Which platforms do you support?',
+              a: 'Amazon (UK, US, DE, FR, IT, ES), eBay, and Shopify. All three channels run through a single operator.',
+            },
+            {
+              q: 'Do I need technical skills to set up?',
+              a: 'No. You connect your stores using the standard OAuth flow — the same "Connect with Amazon" button you have seen elsewhere. Setup takes about five minutes.',
+            },
+            {
+              q: 'How does the autonomy work?',
+              a: 'You start on Suggest mode — the AI recommends actions and waits for your approval on everything. You can advance to Approve mode (executes with a 4-hour reversal window) or Autonomous (full execution, morning brief only) whenever you are ready. You can drop back down at any time.',
+            },
+            {
+              q: 'What tools does OROKRT replace?',
+              a: 'PPC management, repricing, listing optimisation, inventory management, competitor monitoring, review solicitation, and analytics. The full ops stack — not just one slice of it.',
+            },
+            {
+              q: 'Is my store data secure?',
+              a: 'All data is encrypted in transit and at rest. We only read what is needed to operate your accounts. We never share or sell your data.',
+            },
+            {
+              q: 'How much does it cost?',
+              a: 'From £199/mo. Early access members lock in a founder rate that will not increase as the product scales.',
+            },
+            {
+              q: 'Can I cancel anytime?',
+              a: 'Yes. No long-term contracts. Cancel before your next billing date and you will not be charged again.',
+            },
+          ].map((item, i) => (
+            <details key={i} style={{ background: '#0a0a0a', padding: '0' }}>
+              <summary style={{
+                padding: '18px 20px',
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                fontSize: 15, fontWeight: 500, color: '#fff',
+              }}>
+                {item.q}
+                <span className="faq-icon" style={{ color: '#C9A84C', fontSize: 18, lineHeight: 1, marginLeft: 16, flexShrink: 0 }}>+</span>
+              </summary>
+              <div style={{ padding: '0 20px 18px', fontSize: 14, lineHeight: 1.7, color: '#888' }}>
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section
+        ref={(el) => reg(el as HTMLElement | null, 'c')}
+        className={vc('c')}
+        style={{ padding: '8px 24px 56px', maxWidth: 720, margin: '0 auto', textAlign: 'center' }}
+      >
+        <p style={{ fontSize: 14, color: '#777' }}>
+          Still have a question?{' '}
+          <a
+            href="mailto:hello@orokrt.ai"
+            style={{ color: '#C9A84C', textDecoration: 'none', borderBottom: '1px solid #C9A84C40' }}
+          >
+            hello@orokrt.ai
+          </a>
+        </p>
+      </section>
 
       {/* FINAL CTA */}
       <section style={{ padding: '72px 24px 96px', textAlign: 'center', position: 'relative' }}>
@@ -490,8 +576,9 @@ export default function OROKRTWaitlist() {
           <div style={{ width: 18, height: 18, borderRadius: 4, background: '#C9A84C', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 600, color: '#000' }}>O</div>
           <span style={{ fontSize: 12, color: '#777' }}>OROKRT.ai · Orokrt Retail Ltd</span>
         </div>
-        <div style={{ fontFamily: MONO, fontSize: 11, color: '#777', display: 'flex', gap: 16 }}>
-          <span>37 skills</span><span>3 channels</span><span>7 countries</span><span>SEIS eligible</span>
+        <div style={{ fontFamily: MONO, fontSize: 11, color: '#777', display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+          <span>37 skills</span><span>3 channels</span><span>7 countries</span>
+          <a href="/privacy" style={{ color: '#777', textDecoration: 'none', borderBottom: '1px solid #333' }}>Privacy policy</a>
         </div>
       </footer>
 
