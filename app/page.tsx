@@ -32,7 +32,8 @@ function EmailForm({ email, setEmail, submitted, submitting, onSubmit }: EmailFo
   return (
     <form
       onSubmit={(e) => { e.preventDefault(); onSubmit() }}
-      style={{ display: 'flex', gap: 8, maxWidth: 460, flexWrap: 'wrap' }}
+      className="email-form"
+      style={{ maxWidth: 460 }}
     >
       <input
         type="email"
@@ -151,7 +152,7 @@ export default function OROKRTWaitlist() {
       </nav>
 
       {/* HERO */}
-      <section style={{
+      <section className="hero-section" style={{
         display: 'flex', flexDirection: 'column',
         justifyContent: 'flex-start', padding: '120px 24px 64px',
         maxWidth: 1000, margin: '0 auto',
@@ -196,8 +197,8 @@ export default function OROKRTWaitlist() {
         {/* Stats strip */}
         <div
           ref={(el) => reg(el as HTMLElement | null, 's')}
-          className={vc('s')}
-          style={{ display: 'flex', gap: 0, marginTop: 72, borderTop: '1px solid #111', flexWrap: 'wrap' }}
+          className={`${vc('s')} stats-strip`}
+          style={{ display: 'flex', gap: 0, marginTop: 72, borderTop: '1px solid #111' }}
         >
           {[
             { v: '867', u: 'hrs/mo', l: 'Operations replaced' },
@@ -205,9 +206,8 @@ export default function OROKRTWaitlist() {
             { v: '3',   u: 'channels', l: 'Amazon · eBay · Shopify' },
             { v: '20',  u: 'min', l: 'Your time per launch' },
           ].map((s, i) => (
-            <div key={i} style={{
-              flex: 1, minWidth: '140px', padding: '24px 0',
-              borderRight: i < 3 ? '1px solid #111' : 'none', textAlign: 'center',
+            <div key={i} className="stat-cell" style={{
+              flex: 1, minWidth: '140px', padding: '24px 0', textAlign: 'center',
             }}>
               <div style={{ fontSize: 28, fontWeight: 600, color: '#fff', letterSpacing: '-0.03em' }}>
                 {s.v}
@@ -234,7 +234,7 @@ export default function OROKRTWaitlist() {
         </div>
 
         <div style={{ position: 'relative', display: 'flex', gap: 0 }} className="timeline-wrap">
-          <div style={{
+          <div className="timeline-line" style={{
             position: 'absolute', top: 7, left: '8px', right: '8px', height: 1,
             background: '#222', zIndex: 0,
           }} />
@@ -336,7 +336,7 @@ export default function OROKRTWaitlist() {
               will have compounded from hundreds of customer accounts.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
+          <div className="moat-inner-grid" style={{ display: 'grid', gap: 6 }}>
             {[
               { n: 'PPC Bible',         d: 'C1–C8 campaigns' },
               { n: 'Launch Ladder',     d: '6-stage lifecycle' },
@@ -444,23 +444,55 @@ export default function OROKRTWaitlist() {
       </section>
 
       <style>{`
+          /* Grids */
           .grid-3col  { grid-template-columns: repeat(3, 1fr); }
           .grid-moat  { grid-template-columns: 1.2fr 1fr; }
           .grid-vs    { grid-template-columns: 1fr 1fr; }
           .grid-trust { grid-template-columns: 1fr 1fr 1fr; }
           .trust-cell { border-right: 1px solid #1a1a1a; }
+          /* Stats */
+          .stat-cell { border-right: 1px solid #111; }
+          .stat-cell:last-child { border-right: none; }
+          /* Moat inner card grid */
+          .moat-inner-grid { grid-template-columns: 1fr 1fr; }
+          /* Email form */
+          .email-form { display: flex; gap: 8px; flex-wrap: wrap; }
+          /* FAQ */
           details summary { list-style: none; cursor: pointer; }
           details summary::-webkit-details-marker { display: none; }
           details[open] .faq-icon { transform: rotate(45deg); }
           .faq-icon { transition: transform 0.2s; display: inline-block; }
-          @media (max-width: 640px) {
+
+          /* Tablet ≤ 900px — 3-col → 2-col */
+          @media (max-width: 900px) {
+            .grid-3col { grid-template-columns: 1fr 1fr !important; }
+          }
+
+          /* Tablet ≤ 768px — collapse heavy grids + timeline */
+          @media (max-width: 768px) {
             .grid-3col  { grid-template-columns: 1fr !important; }
             .grid-moat  { grid-template-columns: 1fr !important; gap: 32px !important; }
+            .timeline-wrap { flex-direction: column !important; gap: 24px !important; }
+            .timeline-wrap > div > div:first-child { display: none !important; }
+            .timeline-line { display: none !important; }
+          }
+
+          /* Mobile ≤ 640px */
+          @media (max-width: 640px) {
+            .hero-section { padding: 88px 20px 48px !important; }
             .grid-vs    { grid-template-columns: 1fr !important; }
             .grid-trust { grid-template-columns: 1fr !important; }
             .trust-cell { border-right: none !important; border-bottom: 1px solid #1a1a1a; }
-            .timeline-wrap { flex-direction: column !important; gap: 28px !important; }
-            .timeline-wrap > div > div:first-child { display: none !important; }
+            /* Stats: 2×2 grid */
+            .stats-strip { display: grid !important; grid-template-columns: 1fr 1fr !important; }
+            .stat-cell { border-right: none !important; border-bottom: 1px solid #111 !important; min-width: unset !important; }
+            .stat-cell:nth-child(odd) { border-right: 1px solid #111 !important; }
+            .stat-cell:nth-child(3), .stat-cell:nth-child(4) { border-bottom: none !important; }
+            /* Moat inner cards: 1 col */
+            .moat-inner-grid { grid-template-columns: 1fr !important; }
+            /* Email form: stacked */
+            .email-form { flex-direction: column !important; max-width: 100% !important; }
+            .email-form input, .email-form button { min-width: unset !important; width: 100% !important; }
           }
         `}</style>
 
