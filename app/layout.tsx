@@ -6,6 +6,7 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://orokrt.ai'),
   title: 'OROKRT.ai — AI Operator for E-commerce',
   description: 'One AI operator replaces your entire ops stack across Amazon, eBay, and Shopify. PPC, listings, B2B, launches, reviews — with you controlling the autonomy.',
   openGraph: {
